@@ -3,6 +3,7 @@ import { getUpcomingMovies } from "../api/tmdb-api";
 import StubAPI from "../api/stubAPI";
 import PageTemplate from "../components/templateMovieListPage";
 import AddToFavoritesButton from '../components/buttons/addToFavorites'
+import AddToWatchList from "../components/buttons/addToWatchList";
 
 const UpcomingMoviesPage = () => {
     const [movies, setMovies] = useState([]);
@@ -27,7 +28,7 @@ const UpcomingMoviesPage = () => {
           title='Upcoming Movies'
           movies={movies}
           action={(movie) => {
-            return <AddToFavoritesButton movie={movie} />;
+            return <AddToWatchList movie={movie} />;
           }}
         />
     );
