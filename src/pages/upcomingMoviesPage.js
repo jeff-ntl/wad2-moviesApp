@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import StubAPI from "../api/stubAPI";
 import PageTemplate from "../components/templateMovieListPage";
+import AddToFavoritesButton from '../components/buttons/addToFavorites'
 
 const UpcomingMoviesPage = () => {
     const [movies, setMovies] = useState([]);
@@ -25,7 +26,9 @@ const UpcomingMoviesPage = () => {
         <PageTemplate
           title='Upcoming Movies'
           movies={movies}
-          buttonHandler={addToFavorites}
+          action={(movie) => {
+            return <AddToFavoritesButton movie={movie} />;
+          }}
         />
     );
 };
