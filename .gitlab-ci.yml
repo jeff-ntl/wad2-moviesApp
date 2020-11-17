@@ -33,3 +33,8 @@ e2etest:
     script:
        # start the server in the background
       - npm run start:ci
+      
+variables:
+ npm_config_cache: "$CI_PROJECT_DIR/.npm"
+ CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+ CTYPREE_TMDB_KEY: "82daa40f5828cda045eb76fd2fcb0cdb"
