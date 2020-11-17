@@ -21,12 +21,20 @@ bundle_app:
   stage: build
   script:
     - npm run build
+  artifacts:
+    paths:
+      - build/
 
 e2etest:    
     stage: test
     before_script:
       - npm install -g http-server
-      - npm install cypress
+      - npm install cypress@5.3.0
     script:
        # start the server in the background
       - npm run start:ci
+      
+variables:
+ npm_config_cache: "$CI_PROJECT_DIR/.npm"
+ CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+ CYPRESS_TMDB_KEY: "82daa40f5828cda045eb76fd2fcb0cdb"
