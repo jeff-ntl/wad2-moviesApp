@@ -7,15 +7,25 @@ stages:
   - build
   - test
 
-# Jobs 
+variables:
+ npm_config_cache: "$CI_PROJECT_DIR/.npm"
+ CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+ CYPRESS_TMDB_KEY: "82daa40f5828cda045eb76fd2fcb0cdb"
 
+cache:
+  key:
+    files:
+      - package.json
+  paths:
+    - .npm
+    - cache/Cypress
+    - node_modules
+
+# Jobs 
 install_dependencies:
   stage: install
   script:
     - npm ci
-  artifacts:
-    paths:
-      - node_modules/
 
 bundle_app:
   stage: build
@@ -34,7 +44,3 @@ e2etest:
        # start the server in the background
       - npm run start:ci
       
-variables:
- npm_config_cache: "$CI_PROJECT_DIR/.npm"
- CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
- CYPRESS_TMDB_KEY: "82daa40f5828cda045eb76fd2fcb0cdb"
