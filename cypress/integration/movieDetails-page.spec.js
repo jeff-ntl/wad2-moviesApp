@@ -1,6 +1,7 @@
 let movieId = null
 let movie;
 let reviews;
+let casts;
 describe("Movie Details Page", () => {
   before(() => {
     cy.request(
@@ -26,6 +27,18 @@ describe("Movie Details Page", () => {
         movie = movieDetails;
         return movieDetails.id;
       })
+      .then(() => {
+        return cy.request(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${Cypress.env(
+            "TMDB_KEY"
+          )}&language=en-US`
+        )
+          .its("body")
+          
+        })
+        .then((castDetails) => {
+          casts = castDetails.cast;
+        });
   });
   beforeEach(() => {
     cy.visit(`/`);
@@ -58,4 +71,9 @@ describe("Movie Details Page", () => {
       .should("have.attr", "src")
       .should("include", movie.poster_path);
   });
+  it("should display the movie casts", () =>{
+    cy.get(".cast").find("h2").contains("Cast:")
+    cy.get(".card").should("have.length", casts.length);
+    cy.get(".card-title").eq(0).contains(casts[0].name)
+  })
 });

@@ -38,7 +38,7 @@ export const getMovies = () => {
       .then(json => json.results);
   };
 
-  export const getCredits = id => {
+  export const getCasts = id => {
     return fetch(
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=82daa40f5828cda045eb76fd2fcb0cdb&language=en-US`
     )

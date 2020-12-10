@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getCredits } from "../../api/tmdb-api";
+import { getCasts } from "../../api/tmdb-api";
 
 import ItemsCarousel from 'react-items-carousel';
 import './movieCastDetails.css';
 
 export default ({ movie }) => {
-    const [credits, setCredits] = useState([]);
+    const [casts, setCasts] = useState([]);
 
     useEffect(() => {
-        getCredits(movie.id).then(credits => {
-            setCredits(credits);
+        getCasts(movie.id).then(casts => {
+            setCasts(casts);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -29,7 +29,7 @@ export default ({ movie }) => {
                 outsideChevron
                 chevronWidth={chevronWidth}
             >
-            {credits.map(c => {
+            {casts.map(c => {
                 return (
                     <div className="card bg-white">
                         <img
