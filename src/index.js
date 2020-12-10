@@ -5,6 +5,7 @@ import HomePage from "./pages/homePage";
 import MoviePage from './pages/movieDetailsPage'
 
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom"    // CHANGED
+import TrendingMoviesPage from "./pages/trendingMoviesPage"
 import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from './pages/upcomingMoviesPage'
@@ -23,6 +24,7 @@ const App = () => {
         <MoviesContextProvider>
           <GenresContextProvider>
             <Switch>
+              <Route exact path="/movies/trending" component={TrendingMoviesPage} />
               <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
               <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
               <Route exact path="/reviews/form" component={AddMovieReviewPage} />
