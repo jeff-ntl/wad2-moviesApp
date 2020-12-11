@@ -7,7 +7,7 @@ const TrendingMoviesPage= () => {
 
     const context = useContext(MoviesContext);
     const movies = context.trending.filter((m) => {  // New
-        return !("watchList" in m);
+        return !("favorite" in m);
     });
     
         return (
