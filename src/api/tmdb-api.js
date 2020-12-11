@@ -45,3 +45,11 @@ export const getMovies = () => {
       .then(res => res.json())
       .then(json => json.cast);
   };
+
+  export const getTrendingMovies = () => {
+    return fetch(
+      'https://api.themoviedb.org/3/trending/movie/week?api_key=82daa40f5828cda045eb76fd2fcb0cdb'
+    )
+      .then(res => res.json())
+      .then(json => json.results);
+  };
