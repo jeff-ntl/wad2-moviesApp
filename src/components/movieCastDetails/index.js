@@ -49,7 +49,7 @@ export default ({ movie }) => {
                 );
             }
         )
-            };
+            }
     </ItemsCarousel>
     </div>
     </div>

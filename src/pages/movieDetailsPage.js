@@ -4,6 +4,7 @@ import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import MovieCastDetails from "../components/movieCastDetails";
+import RecommendedMovies from "../components/recommendedMovies";
 import useMovie from "../hooks/useMovie";
 
 
@@ -14,10 +15,19 @@ const MoviePage = props => {
     <>
     {movie ? (
       <>
-        <PageTemplate movie={movie}>
-          <MovieDetails movie={movie} />
-        </PageTemplate>
-        <MovieCastDetails movie={movie} />
+        <div className="row">
+          <div className="col-9">
+            <PageTemplate movie={movie}>
+            <MovieDetails movie={movie} />
+            </PageTemplate>
+            <MovieCastDetails movie={movie} />
+          </div>
+          <div className="col-3">
+            <RecommendedMovies movie={movie} />
+          </div>
+
+        </div>
+        
         <div className="row">
           <div className="col-12 ">
             {!props.history.location.pathname.endsWith("/reviews") ? (
