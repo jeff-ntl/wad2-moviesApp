@@ -16,22 +16,22 @@ export default ({ movie }) => {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
     const chevronWidth = 40;
     return (
-        <div className="cast bg-dark">
-            <h2 className="border_bottom text-light pl-2">Cast:</h2>
+        <div className="cast bg-white">
+            <h2 className="border-bottom pl-2">Cast:</h2>
             <div style={{ padding: `0 ${chevronWidth}px` }}>
             <ItemsCarousel               
                 requestToChangeActive={setActiveItemIndex}
                 activeItemIndex={activeItemIndex}
                 numberOfCards={5}
                 gutter={20}
-                leftChevron={<button class="btn btn-outline-light">{'<'}</button>}
-                rightChevron={<button class="btn btn-outline-light">{'>'}</button>}
+                leftChevron={<button class="btn btn-outline-dark">{'<'}</button>}
+                rightChevron={<button class="btn btn-outline-dark">{'>'}</button>}
                 outsideChevron
                 chevronWidth={chevronWidth}
             >
             {casts.map(c => {
                 return (
-                    <div className="card bg-white">
+                    <div className="card bg-white mt-2">
                         <img
                             src={
                                 c.profile_path 

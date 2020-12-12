@@ -10,6 +10,6 @@ input {
   margin-right: 100px;
 }
 
-.border_bottom{
+.border-bottom-filter{
   border-bottom: 5px double white;
 }

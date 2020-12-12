@@ -14,7 +14,9 @@ export default ({ movie }) => {
     }, []);
     return (
         <div className="card">
-            <div className="card-header bg-white">You might also like:</div>
+            <div className="card-header bg-white">
+                <h4>You might also like:</h4>
+            </div>
             <div className="card-body">
                 
                 {recommendedMovies.length >0 ? 
@@ -46,7 +48,7 @@ export default ({ movie }) => {
                             );
                         }
                     )
-                    : <p className="py-4">No recommendations yet.</p>
+                    : <p className="py-4">No recommendations found.</p>
                 }
 
         </div>

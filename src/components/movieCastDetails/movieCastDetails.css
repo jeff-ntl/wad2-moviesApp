@@ -16,6 +16,6 @@ h2{
     margin: 10px 0px;
 }
 
-.border_bottom{
-    border-bottom: 5px double white;
-  }
+.border-bottom{
+    border-bottom: 3px solid grey;
+}
