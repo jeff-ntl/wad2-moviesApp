@@ -14,7 +14,7 @@ export default ({ movie }) => {
     }, []);
     return (
         <div className="card">
-            <div className="card-header">You might also like:</div>
+            <div className="card-header bg-white">You might also like:</div>
             <div className="card-body">
                 {recommendedMovies.map(r => {
                     return (

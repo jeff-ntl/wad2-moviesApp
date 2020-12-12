@@ -15,3 +15,7 @@ h2{
 .cast{
     margin: 10px 0px;
 }
+
+.border_bottom{
+    border-bottom: 5px double white;
+  }

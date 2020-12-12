@@ -16,16 +16,16 @@ export default ({ movie }) => {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
     const chevronWidth = 40;
     return (
-        <div className="cast">
-            <h2 className="bg-info">Cast:</h2>
+        <div className="cast bg-dark">
+            <h2 className="border_bottom text-light pl-2">Cast:</h2>
             <div style={{ padding: `0 ${chevronWidth}px` }}>
             <ItemsCarousel               
                 requestToChangeActive={setActiveItemIndex}
                 activeItemIndex={activeItemIndex}
                 numberOfCards={5}
                 gutter={20}
-                leftChevron={<button class="btn btn-outline-info">{'<'}</button>}
-                rightChevron={<button class="btn btn-outline-info">{'>'}</button>}
+                leftChevron={<button class="btn btn-outline-light">{'<'}</button>}
+                rightChevron={<button class="btn btn-outline-light">{'>'}</button>}
                 outsideChevron
                 chevronWidth={chevronWidth}
             >
