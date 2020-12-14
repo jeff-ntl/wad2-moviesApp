@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getRecommendations } from "../../api/tmdb-api";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default ({ movie }) => {
     const [recommendedMovies, setRecommendedMovies] = useState([]);
@@ -35,7 +36,9 @@ export default ({ movie }) => {
                                     />
                                 </div>
                                 <div className="col-8">
-                                    <h4>{r.title}</h4>
+                                    <Link to={`/movies/${r.id}`}>
+                                        <h4>{r.title}</h4>
+                                    </Link>
                                     <p>
                                         <FontAwesomeIcon icon={["fas", "star"]} />
                                         <span>

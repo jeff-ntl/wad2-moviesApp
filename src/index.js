@@ -29,7 +29,7 @@ const App = () => {
               <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
               <Route exact path="/reviews/form" component={AddMovieReviewPage} />
               <Route path="/reviews/:id" component={MovieReviewPage} />
-              <Route path="/movies/:id" component={MoviePage} />
+              <Route path="/movies/:id" component={(props) => <MoviePage {...props} key={props.match.params.id}/>} />     
               <Route path="/" component={HomePage} />
               <Redirect from="*" to="/" />
             </Switch>
