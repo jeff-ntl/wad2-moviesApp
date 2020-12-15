@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage";
@@ -14,10 +14,28 @@ import SiteHeader from './components/siteHeader'
 
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
-import { AuthProvider } from "./Firebase/context";
+import { AuthContext, AuthProvider } from "./Firebase/context";
 import SignIn from "./components/signIn";
 
 const App = () => {
+  //private route
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+  const { user } = useContext(AuthContext);
+
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        user ? (
+          <Component {...props} {...rest} />
+        ) : (
+          <Redirect to={{ pathname: '/signin' }} />
+        )
+      }
+    />
+  );
+};
+
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -29,7 +47,7 @@ const App = () => {
               <Switch>
                 <Route path="/signin" exact component={SignIn} />
                 <Route exact path="/movies/trending" component={TrendingMoviesPage} />
-                <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+                <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
                 <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />

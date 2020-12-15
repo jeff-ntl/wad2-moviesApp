@@ -26,3 +26,5 @@ cypress.env.json
 
 /cypress/videos
 /cypress/screenshots
+
+/Firebase/config.js
