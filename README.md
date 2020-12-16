@@ -1,6 +1,6 @@
 # Assignment 1 - ReactJS app.
 
-Name: ... your name ...
+Name: Teek Leng Ng (W20078325)
 
 ## Features.
 
@@ -20,9 +20,9 @@ Name: ... your name ...
 
 ..... List the additional TMDB endpoints used in your assignment, e.g.
 
-+ https://api.themoviedb.org/3/movie/${id} - get detailed information on a specific movie. 
-+ https://api.themoviedb.org/3/genre/movie/list - get a list of movie genres
-+ .......
++ https://api.themoviedb.org/3/trending/movie/week?api_key=<<api_key>> - get weekly trending movies
++ https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US - get the cast for a movie
++ https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=<<api_key>>&language=en-US&page=1 - get recommended movies for a movie
 
 ## App Design.
 
