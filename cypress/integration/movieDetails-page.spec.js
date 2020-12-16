@@ -50,7 +50,6 @@ describe("Movie Details Page", () => {
     cy.visit(`/`);
     cy.get(".card").eq(2).find("img").click();
   });
-
   it("should display movie title in the page header", () => {
     cy.get("h2").contains(movie.title);
   });
@@ -71,23 +70,31 @@ describe("Movie Details Page", () => {
         cy.get("li").eq(3).contains(movie.release_date);
       });
   });
-  it("should display the recommended movies' details", () => {
-    cy.get("h4").contains("You might also like:");
-    cy.get("div.card").find("img.center").eq(0)
-      .should("have.attr", "src")
-      .should("include", recommendedMovies[0].poster_path);
-    cy.get("div.col-8").find("h4").eq(0).contains(recommendedMovies[0].title);
-  });
+ 
   it("should display movie casts", () => {
     cy.get("div.cast").find("h2").contains("Cast:");
     cy.get("div.cast").find("img").eq(0)
       .should("have.attr", "src")
       .should("include", casts[0].profile_path );
   });
+  it("should display the recommended movies' details", () => {
+    cy.get("h4").contains("You might also like:");
+    if(recommendedMovies.length > 0){
+      cy.get("div.card").find("img.center").eq(0)
+      .should("have.attr", "src")
+      .should("include", recommendedMovies[0].poster_path);
+      cy.get("div.col-8").find("h4").eq(0).contains(recommendedMovies[0].title);
+    }
+    else{
+      cy.get("div.card").find("p").contains("No recommendations found.");
+    }
+  });
   it("should allow navigation to recommended movie", () => {
-    cy.get("div.col-8").find("h4").eq(0).click()
-    cy.url().should("include", recommendedMovies[0].id);
-    cy.get("h4").next().contains(recommendedMovies[0].overview);
+    if(recommendedMovies.length > 0){
+      cy.get("div.col-8").find("h4").eq(0).click()
+      cy.url().should("include", recommendedMovies[0].id);
+      cy.get("h4").next().contains(recommendedMovies[0].overview);
+    }
   });
   it("should display the Home icon with the correct URL value", () => {
     cy.get(".fa-home")

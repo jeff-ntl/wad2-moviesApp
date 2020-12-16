@@ -7,8 +7,8 @@ import MoviesHeader from "../src/components/headerMovieList";
 import MovieList from "../src/components/movieList";
 import MovieDetails from "../src/components/movieDetails";
 import MovieHeader from "../src/components/headerMovie";
-import MovieCastDetails from "../src/components/movieCastDetails"
-import RecommendedMovies from "../src/components/recommendedMovies"
+import MovieCastDetails from "../src/components/movieCastDetails";
+import RecommendedMovies from "../src/components/recommendedMovies";
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
@@ -158,6 +158,7 @@ storiesOf("Movie Details Page/MovieHeader", module)
 storiesOf("Movie Details Page/MovieCastDetails", module).add("default", () => (
   <MovieCastDetails movie={sample} />
 ));
+
 
 storiesOf("Movie Details Page/RecommendedMovies", module).add("default", () => (
   <RecommendedMovies movie={sample} />
