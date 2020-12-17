@@ -3,118 +3,143 @@
 Name: ... your name ...
 
 ## Features.
-
-...... A bullet-point list of the ADDITIONAL user features you have implemented for the  Movies Fan app ......,
  
- + Feature 1 - .... a statement of its purpose/objective ..... 
- + Feature 2 - .......
- + Feature 3 = ......
- + etc
- + etc
+ + Trending Movies - Shows weekly trending movies obtained from TMDB.
+ + Movie Casts - Shows Casts (Actors) of a movie.
+ + Recommendations - Provides maximum 5 recommended movies for a particular movie. Shows "No Recommendations Found" for movie with no recommendations.
+ + React Item Carousel - Used for displaying movie casts fetched. 
+ + Firebase Authentication / Firebase UI - Uses pre-made Firebase UI components to authenticate user by email/password login. 
+ + Private Routes - Favorite Movies Page is now private. Authentication is required before accessing this page.
 
 ## Setup requirements (If required).
 
-...... A brief explanation of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+Firebase Authentcation:
++ npm install --save firebase
+
+Firebase UI:
++ npm install firebase react-firebaseui
 
 ## API Data Model.
 
-..... List the additional TMDB endpoints used in your assignment, e.g.
-
+<<<<<<< Updated upstream
 + https://api.themoviedb.org/3/movie/${id} - get detailed information on a specific movie. 
 + https://api.themoviedb.org/3/genre/movie/list - get a list of movie genres
 + .......
+||||||| constructed merge base
++ https://api.themoviedb.org/3/trending/movie/week?api_key=<<api_key>> - get weekly trending movies
++ https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US - get the cast for a movie
++ https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=<<api_key>>&language=en-US&page=1 - get recommended movies for a movie
+=======
++ https://api.themoviedb.org/3/trending/movie/week?api_key={API_KEY} - get weekly trending movies.
++ https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={API_KEY}&language=en-US - get the cast for a movie.
++ https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={API_KEY}&language=en-US&page=1 - get recommended movies for a movie.
+>>>>>>> Stashed changes
 
 ## App Design.
 
-### Component catalogue (If required).
+### Component catalogue
 
-....... Insert a screenshot from the Storybook UI, hi-light stories relating to new/modified components you developed - see example screenshot below] .......
+![][storybook]
 
-![][stories]
+Story for the movie casts component is implemented. 
+
+#### MovieCastDetails
+![][storybook_casts]
+A placeholder image will be used if the cast has no profile image.
 
 ### UI Design.
 
-...... Insert screenshots of the new/modified views you have added to the Movies Fan app. Include a caption for each one clearly stating its purpose and any user interaction it supports ........
+![][trending]
+>Shows trending movies of the week.
 
-![][movieDetail]
->Shows detailed information on a movie. Clicking the 'Show Reviews' button will display extracts from critic reviews.
+![][movie_detail]
+>Shows the movie details. Recommended movies and Movie casts are included in this page.
 
-![][review]
->Shows the full text for a movie review. 
-
+![][signin]
+>Uses Firebase UI for user authentication.
 ## Routing.
 
-...... Insert a list of the additional routes supported by your Movies Fan app. If relevant, specify which of the routes require authentication, i.e. protected/private.
-
-+ /movies/favorites (protected) - displays the user's favorite movies selection.
-+ /reviews/:id (public) - displays the full text of a movie review.
-+ etc.
-+ etc.
++ /movies/favorites (private) - Users can only view this page after authentication. They will be redirected to /signin if they haven't done so.
++ /movies/trending (public) - Displays trending movies of the week.
++ /signin (public) - Uses Firebase authentication to authenticate the user.
++ /movies/:id (public) - Key attribute is added to the Movie component to make React re-render Movie component whenever the URL parameter changes (e.g /movies/646593 changes to /movies/690184).
 
 ### Data hyperlinking.
 
-.... Use screenshots to illustrate where data hyperlinking is present in your views - include captions.
-
-![][cardLink]
+![][card_link]
 > Clicking a card causes the display of that movie's details.
 
-![][reviewLink]
->Clicking the 'Full Review' for a review extract will display the full text of the review
+![][show_review_link]
+> Clicking the 'Show Review (Extracts)' button will display movie reviews.
+
+![][review_link]
+> Clicking the 'Full Review' for a review extract will display the full text of the review
+
+![][recommend_link]
+> Clicking the name of any of the recommended movies will display details of it.
 
 ## Independent learning (If relevant).
 
-. . . . . Briefly mention each technologies/techniques used in your project codebase that were not covered in the lectures/labs. Provide source code filename references to support your assertions and include reference material links (articles/blogs).
+React Item Carousel: to display casts retrieved for a movie.
++ https://github.com/kareemaly/react-items-carousel
+
+Firebase Authentication / Firebase UI: to authenticate user by using pre-made Firebase UI.
++ https://medium.com/javascript-in-plain-english/introduction-to-react-context-api-with-firebase-authentication-92a6a3cf116d
++ https://github.com/firebase/firebase-js-sdk/issues/2120
+
+Private Routes: to prevent the access of favorite movies page without authentication.
++ https://stackoverflow.com/questions/58495916/firebase-onauthstatechanged-with-react-context-not-updating-app
+
+Adding key to Movie Component: makes React re-render components on URL parameters change.
++ https://stackoverflow.com/questions/52252353/re-render-same-component-on-url-change-in-react
+
 
 ---------------------------------
 
 # Assignment 1 - Agile Software Practice.
 
-Name: ... your name ...
+Name: Teek Leng Ng (W20078325)
 
 ## App Features.
 
-[Document each new feature/page in your Movies Fan app, including: Feature Name; Its objective/purpose; The associated test file; a screenshot of its UI.]
-e,g,
+#### Movie details page - Shows the details about a movie, including movie casts and recommendations.
+
+![][movie_detail]
  
-+ Movie Details page - Shows the details about a movie. The Show reviews button reveals an excerpt for each critic review of the movie.
+> Tests: cypress/integration/movieDetails.spec.js 
 
-Tests: cypress/integration/movieDetails.spec.js 
+#### Navigation - Web app navigation, including data hyperlinking, public and private routing.
 
-![][movieDetail]
+![][routes]
 
-+ Movie Review page: Displays the full text of a movie review.
+![][recommend_link]
 
-Tests: cypress/integration/movieReviewPage.spec.js 
+> Tests: cypress/integration/navigation.spec.js 
 
-![][review]
+#### Bundling - Dynamically import components, to reduce main bundle size
 
-+ etc
-
-+ etc
+![][dynamic_import]
 
 ## Testing.
 
-Cypress Dashboard URL: ... your project's dashboard URL .....
-
++ GitHub Repo URL: https://github.com/jeff-ntl/wad2-moviesApp
++ GitLab Repo URL: https://gitlab.com/jeff-ntl/moviesapp-ci
++ Cypress Dashboard URL: https://dashboard.cypress.io/projects/axopxg
 ### Advanced Testing (If required).
 
-[State briefly each instances of boundary and/or error/exceptional test case in your project]
-e.g.
-
-+ cypress/integration/movieReviewPage.spec.js - test the movieReview page when the Review id is invalid. 
-+ cypress/integration/movieDetails.spec.js - test when a movie has no reviews.
-+ etc
-
-## Independent learning (If relevant).
-
-[ Itemize each technologies/techniques used in your project that were not covered in the lectures/labs. Provide the necessary evidence of their use (e,g, project file names, screenshots, service URL, etc)
-
-List reference material links (articles/blogs).
++ cypress/integration/movieDetails.spec.js - test when a movie has no recommendations.
++ cypress/integration/navigate.spec.js - test navigation to recommended movie and back.
 
 ---------------------------------
 
-[movieDetail]: ./public/movieDetail.png
-[review]: ./public/review.png
-[reviewLink]: ./public/reviewLink.png
-[cardLink]: ./public/cardLink.png
-[stories]: ./public/storybook.png
+[review_link]: ./public/review_link.png
+[card_link]: ./public/card_link.png
+[show_review_link]: ./public/show_review_link.png
+[storybook]: ./public/storybook.png
+[storybook_casts]: ./public/storybook_casts.png
+[recommend_link]: ./public/recommend_link.png
+[trending]: ./public/trending.png
+[movie_detail]: ./public/movie_detail.png
+[signin]: ./public/signin.png
+[dynamic_import]: ./public/dynamic_import.png
+[routes]: ./public/routes.png
