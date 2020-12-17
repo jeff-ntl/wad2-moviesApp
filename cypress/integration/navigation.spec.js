@@ -25,27 +25,28 @@ describe("Navigation", () => {
         console.log(response);
         reviews = response.results;
       });
-    cy.request(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${Cypress.env(
-        "TMDB_KEY"
-      )}&language=en-US&page=1`
-    )
-      .its("body")
-      .then((response) => {
-        console.log(response);
-        upcomingMovies = response.results;
-    });
-    cy.request(
-      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${Cypress.env(
-        "TMDB_KEY"
-      )}&language=en-US&page=1`
-    )
-      .its("body")
-      .then((response) => {
-        console.log(response);
-        recommendedMovies = response.results;
+      cy.request(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${Cypress.env(
+          "TMDB_KEY"
+        )}&language=en-US&page=1`
+      )
+        .its("body")
+        .then((response) => {
+          console.log(response);
+          upcomingMovies = response.results;
       });
     })
+      cy.request(
+        `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${Cypress.env(
+          "TMDB_KEY"
+        )}&language=en-US&page=1`
+      )
+        .its("body")
+        .then((response) => {
+          console.log(response);
+          recommendedMovies = response.results;
+        });
+  });
 
   describe("From the home page", () => {
     beforeEach(() => {
@@ -101,18 +102,17 @@ describe("Navigation", () => {
   describe("From the Favorites page", () => {
     beforeEach(() => {
       cy.visit("/");
-
+    it("should navigate to the movies detail page and change the browser URL", () => {
       cy.get("nav").find(".account").get("button").click();
       cy.url().should("include", `/signin`);
       cy.get("#ui-sign-in-email-input").type(Cypress.env("USER_EMAIL"))
       cy.get("form").find("button").click();
       cy.get("#ui-sign-in-password-input").type(Cypress.env("USER_PASSWORD"))
       cy.get("form").find("button").click();
-    });
-    it("should navigate to the movies detail page and change the browser URL", () => {
       
       cy.get(".card").eq(0).find("button").click();
       cy.get("nav").find("li").eq(2).find("a").click();
+
       cy.get(".card").eq(0).find("img").click();
       cy.url().should("include", `/movies/${movies[0].id}`);
       cy.get("h2").contains(movies[0].title);
@@ -145,4 +145,3 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies/${upcomingMovies[0].id}`);
     });
   });
-});

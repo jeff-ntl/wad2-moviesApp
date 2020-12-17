@@ -21,29 +21,9 @@ Firebase UI:
 
 ## API Data Model.
 
-<<<<<<< HEAD
-+ https://api.themoviedb.org/3/trending/movie/week?api_key=<<api_key>> - get weekly trending movies
-+ https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US - get the cast for a movie
-+ https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=<<api_key>>&language=en-US&page=1 - get recommended movies for a movie
-||||||| 193274c
-+ https://api.themoviedb.org/3/movie/${id} - get detailed information on a specific movie. 
-+ https://api.themoviedb.org/3/genre/movie/list - get a list of movie genres
-+ .......
-=======
-<<<<<<< Updated upstream
-+ https://api.themoviedb.org/3/movie/${id} - get detailed information on a specific movie. 
-+ https://api.themoviedb.org/3/genre/movie/list - get a list of movie genres
-+ .......
-||||||| constructed merge base
-+ https://api.themoviedb.org/3/trending/movie/week?api_key=<<api_key>> - get weekly trending movies
-+ https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US - get the cast for a movie
-+ https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=<<api_key>>&language=en-US&page=1 - get recommended movies for a movie
-=======
 + https://api.themoviedb.org/3/trending/movie/week?api_key={API_KEY} - get weekly trending movies.
 + https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={API_KEY}&language=en-US - get the cast for a movie.
 + https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={API_KEY}&language=en-US&page=1 - get recommended movies for a movie.
->>>>>>> Stashed changes
->>>>>>> develop
 
 ## App Design.
 
