@@ -158,7 +158,8 @@ storiesOf("Movie Details Page/MovieHeader", module)
 storiesOf("Movie Details Page/MovieCastDetails", module).add("default", () => (
   <MovieCastDetails movie={sample} />
 ));
-
+/*
 storiesOf("Movie Details Page/RecommendedMovies", module).add("default", () => (
   <RecommendedMovies movie={sample} />
 ));
+*/
