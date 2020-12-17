@@ -25,10 +25,6 @@ describe("Navigation", () => {
         console.log(response);
         reviews = response.results;
       });
-<<<<<<< Updated upstream
-||||||| constructed merge base
-
-=======
       cy.request(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${Cypress.env(
           "TMDB_KEY"
@@ -49,7 +45,6 @@ describe("Navigation", () => {
           console.log(response);
           recommendedMovies = response.results;
         });
->>>>>>> Stashed changes
   });
 
   describe("From the home page", () => {
@@ -62,23 +57,9 @@ describe("Navigation", () => {
       cy.get("h2").contains(movies[1].title);
     });
     it("should allow navigation from site header", () => {
-<<<<<<< Updated upstream
-      cy.get("nav").find("li").eq(2).find("a").click();
-      cy.url().should("include", `/favorites`);
-      cy.get("h2").contains("Favorite Movies");
-||||||| constructed merge base
-      cy.get("nav").find(".account").get("button").click();
-      cy.url().should("include", `/signin`);
-      cy.get("#ui-sign-in-email-input").type(Cypress.env("USER_EMAIL"))
-
-      cy.get("nav").find("li").eq(2).find("a").click();
-      cy.url().should("include", `/favorites`);
-      cy.get("h2").contains("Favorite Movies");
-=======
       cy.get("nav").find("li").eq(3).find("a").click();
       cy.url().should("include", `/trending`);
       cy.get("h2").contains("Trending Movies");
->>>>>>> Stashed changes
       cy.get("nav").find("li").eq(1).find("a").click();
       cy.url().should("not.include", `/trending`);
       cy.get("h2").contains("Upcoming Movies");
@@ -119,15 +100,6 @@ describe("Navigation", () => {
   describe("From the Favorites page", () => {
     beforeEach(() => {
       cy.visit("/");
-<<<<<<< Updated upstream
-||||||| constructed merge base
-    });
-    it("should navigate to the movies detail page and change the browser URL", () => {
-      cy.get("nav").find(".account").get("button").click();
-      cy.url().should("include", `/signin`);
-      cy.get("#ui-sign-in-email-input").type(Cypress.env("USER_EMAIL"))
-      
-=======
     });
     it("should navigate to the movies detail page and change the browser URL", () => {
       cy.get("nav").find(".account").get("button").click();
@@ -137,11 +109,6 @@ describe("Navigation", () => {
       cy.get("#ui-sign-in-password-input").type(Cypress.env("USER_PASSWORD"))
       cy.get("form").find("button").click();
 
->>>>>>> Stashed changes
-      cy.get(".card").eq(0).find("button").click();
-      cy.get("nav").find("li").eq(2).find("a").click();
-    });
-    it("should navigate to the movies detail page and change the browser URL", () => {
       cy.get(".card").eq(0).find("img").click();
       cy.url().should("include", `/movies/${movies[0].id}`);
       cy.get("h2").contains(movies[0].title);
@@ -158,30 +125,6 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies`);
       cy.get("h2").contains("Discover Movies");
     });
-<<<<<<< Updated upstream
-    it("should navigate from favorites page to movie details and back", () => {
-        cy.get(".card").eq(0).find("button").click();
-        cy.get("nav").find("li").eq(2).find("a").click();
-        cy.get(".card").eq(0).find("img").click();
-        cy.url().should("include", `/movies/${movies[0].id}`);
-        cy.get("svg[data-icon=arrow-circle-left]").click();
-        cy.url().should("not.include", `/movies/${movies[0].id}`);
-        cy.get("h2").contains("Favorite Movies");
-||||||| constructed merge base
-    it("should navigate from favorites page to movie details and back", () => {
-      
-      cy.get("nav").find(".account").get("button").click();
-      cy.url().should("include", `/signin`);
-      cy.get("#ui-sign-in-email-input").type(Cypress.env("USER_EMAIL"))
-
-      cy.get(".card").eq(0).find("button").click();
-      cy.get("nav").find("li").eq(2).find("a").click();
-      cy.get(".card").eq(0).find("img").click();
-      cy.url().should("include", `/movies/${movies[0].id}`);
-      cy.get("svg[data-icon=arrow-circle-left]").click();
-      cy.url().should("not.include", `/movies/${movies[0].id}`);
-      cy.get("h2").contains("Favorite Movies");
-=======
     it("should navigate from upcoming page to movie details and back", () => {
       cy.get("nav").find("li").eq(1).find("a").click();
       cy.get(".card").eq(0).find("img").click();
@@ -196,8 +139,6 @@ describe("Navigation", () => {
       cy.url().should("include", `/movies/${recommendedMovies[0].id}`);
       cy.get("svg[data-icon=arrow-circle-left]").click();
       cy.url().should("not.include", `/movies/${upcomingMovies[0].id}`);
-
->>>>>>> Stashed changes
     });
   });
 });
