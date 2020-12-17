@@ -32,6 +32,8 @@ export default ({ movie }) => {
                                             : '/film-poster-placeholder.png'
                                     }
                                     className="center"
+                                    width="60"
+                                    height="90"
                                     alt={r.title}
                                     />
                                 </div>

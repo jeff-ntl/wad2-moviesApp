@@ -159,7 +159,8 @@ storiesOf("Movie Details Page/MovieCastDetails", module).add("default", () => (
   <MovieCastDetails movie={sample} />
 ));
 
-
+/* will return error, need to fix this
 storiesOf("Movie Details Page/RecommendedMovies", module).add("default", () => (
   <RecommendedMovies movie={sample} />
 ));
+*/
