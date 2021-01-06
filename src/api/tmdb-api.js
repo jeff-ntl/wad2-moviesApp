@@ -33,10 +33,11 @@
 
   export const getUpcomingMovies = () => {
     return fetch(
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=82daa40f5828cda045eb76fd2fcb0cdb&language=en-US&page=1'
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+      '/api/movies/upcoming',{headers: {
+        'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
   };
 
   export const getCasts = id => {
@@ -49,10 +50,11 @@
 
   export const getTrendingMovies = () => {
     return fetch(
-      'https://api.themoviedb.org/3/trending/movie/week?api_key=82daa40f5828cda045eb76fd2fcb0cdb'
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+      '/api/movies/trending',{headers: {
+        'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
   };
 
   export const getRecommendations = id => {
